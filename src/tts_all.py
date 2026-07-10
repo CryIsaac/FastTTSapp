@@ -4,10 +4,6 @@ from transformers import AutoModel, AutoTokenizer, pipeline
 import sounddevice as sd
 import numpy as np
 
-def say(audio, samplerate):
-    sd.play(audio, samplerate=samplerate)
-    sd.wait()
-
 class transAutoTTS():
     def __init__(self, model_dir, local_files_only=True):
         self.model = AutoModel.from_pretrained(model_dir, local_files_only=local_files_only)
@@ -43,11 +39,7 @@ class pyttsx3TTS():
         self.engine.say(text)
         self.engine.runAndWait()
         self.engine.stop()
-
-
-        
-
-        
+       
 def download_TTSmodel(repo_id, local_dir):
     model_path = snapshot_download(
         repo_id=repo_id,
