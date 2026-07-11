@@ -30,12 +30,14 @@ class transPiplineTTS():
         sd.wait()
 
 class pyttsx3TTS():
-    def __init__(self, voices_id:int=0): 
+    def __init__(self, voice_id:int=0): 
         self.engine = pyttsx3.init()
         self.voices = self.engine.getProperty("voices")
+        self.voice_id = voice_id
     def settings(self, set:str, data):
-        self.engine.setProperty(str, data)
+        self.engine.setProperty(set, data)
     def say(self, text:str):
+        self.settings('voice', self.voices[self.voice_id].id)
         self.engine.say(text)
         self.engine.runAndWait()
         self.engine.stop()
