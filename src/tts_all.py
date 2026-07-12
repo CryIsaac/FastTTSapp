@@ -32,6 +32,7 @@ class transPiplineTTS():
 class pyttsx3TTS():
     def __init__(self, voice_id:int=0): 
         self.engine = pyttsx3.init()
+        self.engine.startLoop(False)
         self.voices = self.engine.getProperty("voices")
         self.voice_id = voice_id
     def settings(self, set:str, data):
